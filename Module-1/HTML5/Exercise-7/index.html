@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Invite</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+
+        video {
+            border: 3px solid #0077cc;
+            border-radius: 10px;
+        }
+
+        #status {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+
+        function videoReady() {
+            document.getElementById("status").textContent =
+                "✅ Video is ready to play.";
+        }
+
+        window.onbeforeunload = function () {
+            return "You have not completed the form. Are you sure you want to leave?";
+        };
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Community Event Promo Video</h2>
+
+    <video width="500" controls oncanplay="videoReady()">
+
+        <source
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            type="video/mp4">
+
+        Your browser does not support HTML5 video.
+
+    </video>
+
+    <p id="status"></p>
+
+</body>
+
+</html>
