@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save User Preferences</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        select,
+        button {
+            padding: 8px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+
+        function savePreference() {
+            let selectedEvent = document.getElementById("eventType").value;
+
+            localStorage.setItem("preferredEvent", selectedEvent);
+            sessionStorage.setItem("currentSelection", selectedEvent);
+
+            alert("Preference Saved Successfully!");
+        }
+
+        function loadPreference() {
+
+            let savedEvent =
+                localStorage.getItem("preferredEvent");
+
+            if (savedEvent) {
+                document.getElementById("eventType").value = savedEvent;
+            }
+
+        }
+
+        function clearPreferences() {
+
+            localStorage.clear();
+            sessionStorage.clear();
+
+            alert("Preferences Cleared!");
+
+            document.getElementById("eventType").value = "";
+
+        }
+
+        window.onload = loadPreference;
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Save Event Preference</h2>
+
+    <label>Select Your Preferred Event:</label>
+
+    <br><br>
+
+    <select id="eventType">
+
+        <option value="">--Select Event--</option>
+
+        <option value="Workshop">Workshop</option>
+
+        <option value="Seminar">Seminar</option>
+
+        <option value="Music Festival">Music Festival</option>
+
+        <option value="Sports Event">Sports Event</option>
+
+    </select>
+
+    <br><br>
+
+    <button onclick="savePreference()">
+        Save Preference
+    </button>
+
+    <button onclick="clearPreferences()">
+        Clear Preferences
+    </button>
+
+</body>
+
+</html>
