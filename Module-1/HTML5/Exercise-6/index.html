@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Feedback</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        img {
+            width: 250px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+
+        // Validate phone number
+        function validatePhone() {
+            let phone = document.getElementById("phone").value;
+
+            if (phone.length !== 10 || isNaN(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+            }
+        }
+
+        // Display event fee
+        function showFee() {
+            let eventType = document.getElementById("eventType").value;
+            let fee = "";
+
+            switch (eventType) {
+                case "Workshop":
+                    fee = "₹500";
+                    break;
+
+                case "Seminar":
+                    fee = "₹300";
+                    break;
+
+                case "Music Festival":
+                    fee = "₹1000";
+                    break;
+
+                default:
+                    fee = "₹0";
+            }
+
+            document.getElementById("fee").innerHTML =
+                "Event Fee: " + fee;
+        }
+
+        // Confirmation message
+        function submitForm() {
+            alert("Feedback submitted successfully!");
+        }
+
+        // Enlarge image
+        function enlargeImage(img) {
+
+            if (img.style.width === "250px") {
+                img.style.width = "450px";
+            }
+            else {
+                img.style.width = "250px";
+            }
+
+        }
+
+        // Character counter
+        function countCharacters() {
+
+            let text =
+                document.getElementById("feedback").value;
+
+            document.getElementById("count").innerHTML =
+                "Characters: " + text.length;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Community Event Feedback Form</h2>
+
+    <label>Phone Number:</label>
+
+    <input
+        type="text"
+        id="phone"
+        onblur="validatePhone()">
+
+    <br><br>
+
+    <label>Select Event:</label>
+
+    <select
+        id="eventType"
+        onchange="showFee()">
+
+        <option>Select</option>
+        <option>Workshop</option>
+        <option>Seminar</option>
+        <option>Music Festival</option>
+
+    </select>
+
+    <p id="fee"></p>
+
+    <button onclick="submitForm()">
+        Submit Feedback
+    </button>
+
+    <br><br>
+
+    <img
+        src="https://via.placeholder.com/250x150?text=Community+Event"
+        ondblclick="enlargeImage(this)"
+        alt="Event Image">
+
+    <p>
+        Double-click the image to enlarge or restore it.
+    </p>
+
+    <br>
+
+    <label>Feedback:</label>
+
+    <br>
+
+    <textarea
+        id="feedback"
+        onkeyup="countCharacters()">
+    </textarea>
+
+    <p id="count">
+        Characters: 0
+    </p>
+
+</body>
+
+</html>
