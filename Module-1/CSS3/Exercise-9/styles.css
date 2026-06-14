@@ -1,0 +1,38 @@
+/* General Page Styling */
+
+body {
+
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+
+}
+
+/* Heading */
+
+h1 {
+
+    text-align: center;
+    color: #0066cc;
+
+}
+
+/* Multi-column Layout */
+
+.newsArticle {
+
+    column-count: 2;
+
+    column-gap: 30px;
+
+    column-rule: 1px solid gray;
+
+    text-align: justify;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+}
